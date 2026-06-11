@@ -3,11 +3,450 @@
     <head>
         <meta charset="UTF-8" />
         <title>Keithston</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sansita+Swashed:wght@300..900&display=swap"
+            rel="stylesheet" />
+        <style>
+            :root {
+                font-size: 62.5%;
+
+                --vertical-page-margin: 8rem;
+                --horizontal-page-margin: 13rem;
+                --light-color: #e9bd8c;
+                --accent-color: #933c24;
+                --gray-color: #5d5d5d;
+                --white-color: #f5f5f5;
+                --box-inside-gap: 2rem;
+            }
+
+            /*generic*/
+
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            ul {
+                list-style-type: none;
+            }
+            a {
+                text-decoration: none;
+                color: inherit;
+
+                /*temporary*/
+                /*
+                color: blue;
+                &:hover {
+                    color: red;
+                }
+                */
+            }
+            button {
+                font-size: inherit;
+            }
+
+            img {
+                width: 100%;
+            }
+
+            /*generic*/
+
+            body {
+                font-size: 2.4rem;
+                font-family: "Inter", "Times News Roman", sans-serif;
+            }
+
+            h1,
+            h2 {
+                font-family: "Sansita Swashed", cursive;
+            }
+
+            .footer h1 {
+                font-family: "Inter", "Times News Roman", sans-serif;
+            }
+
+            .btn {
+                background-color: var(--accent-color);
+                color: white;
+                padding: 0.5em 1.4em;
+                border-radius: 0.5rem;
+                font-weight: 500;
+                width: fit-content;
+            }
+
+            .empty-btn {
+                background-color: transparent;
+                color: var(--light-color);
+            }
+            /*header*/
+            .header {
+                font-size: 0.916em;
+                display: flex;
+                align-items: center;
+                top: 0;
+                left: 0;
+
+                position: absolute;
+                z-index: 2;
+            }
+
+            .header_logo {
+                width: 8rem;
+                margin: 0.5em 5em 0.5em 3em;
+            }
+
+            .header_nav ul {
+                display: flex;
+                gap: 1.35em;
+                align-items: center;
+                a {
+                    color: white;
+                    font-family: "Montserrat", "Poppins";
+                    font-weight: 600;
+                }
+            }
+
+            .hero {
+                padding-top: 20rem;
+                padding-right: var(--vertical-page-margin);
+                padding-left: var(--vertical-page-margin);
+                padding-bottom: 15rem;
+                background: url(images/hero-background.png);
+                background-size: cover;
+                background-repeat: no-repeat;
+                position: relative;
+
+                span {
+                    display: block;
+                }
+            }
+
+            .hero .small-title {
+                color: var(--light-color);
+                font-weight: 500;
+            }
+
+            .hero .big-title {
+                font-size: 2.66em;
+                font-family: "Sansita Swashed", cursive;
+                width: 6em;
+                margin-bottom: 2em;
+                color: #f5f5f5;
+            }
+
+            .main h1 {
+                text-align: center;
+                margin: 2em;
+            }
+
+            .container_of_cards {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 2rem;
+                margin-left: var(--vertical-page-margin);
+                margin-right: var(--vertical-page-margin);
+                /*width: 100%;*/
+            }
+
+            .card {
+                padding: 3rem;
+                /*border: 1px solid red;*/
+                flex-basis: 22%;
+                display: grid;
+                grid-template-columns: 1fr 8rem;
+                grid-template-rows: 20rem 5rem 5rem;
+                grid-gap: 2rem;
+                border-radius: 18px;
+
+                background-image: url(images/top-card-background.png);
+                background-color: rgba(255, 255, 255, 0.05);
+                background-blend-mode: overlay;
+                color: white;
+                font-weight: 600;
+
+                box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.52);
+                img {
+                    grid-column: 1 / -1;
+                    grid-row: 1 / 2;
+                    height: 100%;
+                    object-fit: contain;
+                    display: block;
+                    /*border: 1px solid blue;*/
+                    margin: auto;
+                }
+
+                .price {
+                    grid-column: 1 / 2;
+                    grid-row: 2 / 3;
+                }
+
+                .info {
+                    grid-column: 2 / 3;
+                    grid-row: 2 / 3;
+                    text-align: center;
+                    position: relative;
+                }
+
+                button {
+                    background-color: var(--accent-color);
+                    color: inherit;
+                    border: none;
+                    border-radius: 0.2em;
+                }
+            }
+
+            .banner {
+                margin: 8rem 0;
+                background-image: url(images/banner-twenty.png);
+                background-size: cover;
+                padding: 10rem 0;
+            }
+
+            .banner .wrapper {
+                width: 34.3rem;
+                text-align: center;
+                margin: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 2rem;
+
+                h2 {
+                    font-size: 4.8rem;
+                    letter-spacing: 3px;
+                    font-weight: 600;
+                }
+            }
+
+            .banner.promo {
+                h2 {
+                    color: var(--accent-color);
+                }
+                .description {
+                    color: var(--gray-color);
+                }
+            }
+
+            .banner.about {
+                h2 {
+                    color: var(--white-color);
+                }
+                .description {
+                    color: #b9b9b9;
+                }
+                background-image: url(images/banner-about.png);
+            }
+
+            .general_container {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .explore_container {
+                order: 2;
+            }
+
+            .explore nav {
+                /*margin: auto;*/
+                /*width: fit-content;*/
+
+                margin-right: var(--vertical-page-margin);
+                margin-left: var(--vertical-page-margin);
+                order: 1;
+                margin-bottom: 5em;
+                padding-bottom: 0.1em;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+                z-index: 7;
+                ul {
+                    /*border: 1px solid red;*/
+                    width: fit-content;
+                    margin: auto;
+                    display: flex;
+                    gap: 2em;
+                    li {
+                        color: #5d5d5d;
+                    }
+                }
+            }
+
+            .general_container .explore_container {
+                display: flex;
+
+                position: absolute;
+                top: 0;
+                z-index: 0;
+                opacity: 0;
+                transform: scale(90%);
+
+                transition:
+                    opacity 1s ease-in-out,
+                    transform 0.5s ease-in-out;
+            }
+
+            input:checked + .explore_container {
+                z-index: 7;
+                position: relative;
+                opacity: 1;
+                transform: scale(100%);
+            }
+
+            .explore_container {
+                flex-wrap: wrap;
+                margin-right: var(--vertical-page-margin);
+                margin-left: var(--vertical-page-margin);
+                gap: var(--box-inside-gap);
+                a {
+                    /*display: block;*/
+                    flex: 1 1 calc(33% - (var(--box-inside-gap) * 2));
+                    /*flex: 1 1 30%;*/
+                    overflow: hidden;
+                    border-radius: 8px;
+                    display: block;
+                    img {
+                        height: 400px;
+                        object-fit: cover;
+                    }
+                }
+            }
+
+            .activator {
+                display: none;
+            }
+
+            input#cake:checked ~ nav label[for="cake"],
+            input#muffins:checked ~ nav label[for="muffins"],
+            input#croissant:checked ~ nav label[for="croissant"],
+            input#bread:checked ~ nav label[for="bread"],
+            input#tart:checked ~ nav label[for="tart"],
+            input#favorite:checked ~ nav label[for="favorite"] {
+                border-bottom: 3px solid var(--accent-color);
+            }
+
+            .explore_container a {
+                /*display: block;*/
+                /*height: 100%;*/
+                /*
+                flex: 1 1 33%;
+                img {
+                    height: 600px;
+                    object-fit: cover;
+                    */
+                /*}*/
+            }
+            nav label {
+                border-bottom: 3px solid transparent;
+                transition: border 0.1s ease-in-out;
+                &:hover {
+                    border-bottom: 3px solid var(--accent-color);
+                }
+            }
+
+            .featured_container {
+                display: flex;
+                justify-content: center;
+                gap: var(--box-inside-gap);
+            }
+
+            .featured_card {
+                .featured_details {
+                    font-weight: 600;
+                    margin: var(--box-inside-gap);
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+
+            .footer_header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                border-bottom: 1px solid rgba(255, 255, 255, 0.46);
+            }
+
+            .footer_social {
+                display: flex;
+                align-items: center;
+                gap: 1em;
+                margin-right: 20rem;
+                ul {
+                    display: flex;
+                    align-items: center;
+                    font-size: 1.5em;
+                }
+            }
+
+            .footer {
+                padding-bottom: 5.6rem;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-image: url(images/footer_back.png);
+                color: white;
+                margin-top: var(--horizontal-page-margin);
+                .content {
+                    display: flex;
+                    justify-content: start;
+                    gap: 10rem;
+                    margin-top: 3rem;
+                    .news {
+                        margin-left: auto;
+                    }
+                    line-height: 1.5;
+                }
+
+                h1 {
+                    color: var(--light-color);
+                }
+            }
+            .copyright {
+                color: #737373;
+            }
+
+            .footer > * {
+                margin-left: var(--vertical-page-margin);
+                margin-right: var(--vertical-page-margin);
+            }
+
+            .footer_logo {
+                width: 8rem;
+                margin: 2rem 0;
+            }
+
+            .copyright {
+                text-align: center;
+                margin: 12.5rem 0 0;
+                display: block;
+            }
+
+            .news_card {
+                display: flex;
+                gap: 2rem;
+                img {
+                    width: 10rem;
+                }
+
+                .date {
+                    margin-bottom: 1rem;
+                    color: var(--light-color);
+                }
+                margin-bottom: 2rem;
+            }
+
+            .footer_social {
+                color: var(--light-color);
+            }
+        </style>
+
+        <script src="https://kit.fontawesome.com/0d0bf5c87d.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <!--position scroll aqui com o hero position relative-->
         <header class="header">
-            <div class="header_logo"><img src="keithson_logo.png" alt="Keithson"/></div>
+            <div class="header_logo"><img src="images/keithston_logo.png" alt="Keithson" /></div>
 
             <nav class="header_nav">
                 <ul>
@@ -21,10 +460,9 @@
 
         <main class="main">
             <section class="hero">
-                <span>Delicious Cafe</span>
+                <span class="small-title">Delicious Cafe</span>
 
-                <!--css abaixo text-wrap: balance -->
-                <span>Sweet Treats, Perfect Eats</span>
+                <span class="big-title">Sweet Treats, Perfect Eats</span>
 
                 <div class="hero_btns">
                     <a href="#" class="btn">Shop Now</a>
@@ -39,136 +477,250 @@
                 <div class="container_of_cards">
                     <!--cards -> grid    -->
                     <article class="card">
-                        <img src="bread1.png" alt="Whole Grain Bread" />
+                        <img src="images/bread1.png" alt="Whole Grain Bread" />
                         <span class="price">$40</span>
-                        <span>Whole Grain Bread</span>
-                        <span>info</span>
+                        <span class="title">Whole Grain Bread</span>
+                        <span class="info">&#9432;</span>
                         <button>Add</button>
                     </article>
                     <article class="card">
-                        <img src="bread2.png" alt="Whole Grain Bread" />
+                        <img src="images/bread2.png" alt="Whole Grain Bread" />
                         <span class="price">$40</span>
-                        <span>Whole Grain Bread</span>
-                        <span>info</span>
+                        <span class="title">Whole Grain Bread</span>
+                        <span class="info">&#9432;</span>
                         <button>Add</button>
                     </article>
                     <article class="card">
-                        <img src="bread3.png" alt="Whole Grain Bread" />
+                        <img src="images/bread3.png" alt="Whole Grain Bread" />
                         <span class="price">$40</span>
-                        <span>Whole Grain Bread</span>
-                        <span>info</span>
+                        <span class="title">Whole Grain Bread</span>
+                        <span class="info">&#9432;</span>
                         <button>Add</button>
                     </article>
                     <article class="card">
-                        <img src="bread4.png" alt="Whole Grain Bread" />
+                        <img src="images/bread4.png" alt="Whole Grain Bread" />
                         <span class="price">$40</span>
-                        <span>Whole Grain Bread</span>
-                        <span>info</span>
+                        <span class="title">Whole Grain Bread</span>
+                        <span class="info">&#9432;</span>
                         <button>Add</button>
                     </article>
                     <article class="card">
-                        <img src="bread5.png" alt="Whole Grain Bread" />
+                        <img src="images/bread5.png" alt="Whole Grain Bread" />
                         <span class="price">$40</span>
-                        <span>Whole Grain Bread</span>
-                        <span>info</span>
+                        <span class="title">Whole Grain Bread</span>
+                        <span class="info">&#9432;</span>
                         <button>Add</button>
                     </article>
                     <article class="card">
-                        <img src="bread6.png" alt="Whole Grain Bread" />
+                        <img src="images/bread6.png" alt="Whole Grain Bread" />
                         <span class="price">$40</span>
-                        <span>Whole Grain Bread</span>
-                        <span>info</span>
+                        <span class="title">Whole Grain Bread</span>
+                        <span class="info">&#9432;</span>
                         <button>Add</button>
                     </article>
                 </div>
             </section>
 
             <section class="banner promo">
-                <h2>20% Off Your First Order</h2>
-                <p>Suspendisse ac rhoncus nisl, eu termpo urna. Curabitur vel bibenjgg.</p>
-                <a href="#" class="btn">Learn More</a>
+                <div class="wrapper">
+                    <h2>20% Off Your First Order</h2>
+                    <p class="description">Suspendisse ac rhoncus nisl, eu termpo urna. Curabitur vel bibenjgg.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
             </section>
 
             <section class="explore">
                 <h1>Explore More</h1>
 
-                <nav>
-                    <ul>
-                        <li><label for="cake">Cake</label></li>
-                        <li><label for="muffins">Muffins</label></li>
-                        <li><label for="croissant">Croissant</label></li>
-                        <li><label for="bread">Bread</label></li>
-                        <li><label for="tart">Tart</label></li>
-                        <li><label for="favorite">Favorite</label></li>
-                    </ul>
-
+                <div class="general_container">
                     <input type="radio" name="explore_activators" class="activator" id="cake" checked />
                     <div class="explore_container">
-                        <a href="#"><img src="cake1" alt="cake" /></a>
-                        <a href="#"><img src="cake2" alt="cake" /></a>
-                        <a href="#"><img src="cake3" alt="cake" /></a>
-                        <a href="#"><img src="cake4" alt="cake" /></a>
-                        <a href="#"><img src="cake5" alt="cake" /></a>
-                        <a href="#"><img src="cake6" alt="cake" /></a>
+                        <a href="https://www.google.com"><img src="images/cake1.png" alt="cake" /></a>
+                        <a href="https://www.google.com"><img src="images/cake2.png" alt="cake" /></a>
+                        <a href="https://www.google.com"><img src="images/cake3.png" alt="cake" /></a>
+                        <a href="https://www.google.com"><img src="images/cake4.png" alt="cake" /></a>
+                        <a href="https://www.google.com"><img src="images/cake5.png" alt="cake" /></a>
+                        <a href="https://www.google.com"><img src="images/cake6.png" alt="cake" /></a>
                     </div>
 
-                    <input type="radio" name="explore_activators" class="activator" id="muffins"/>
+                    <input type="radio" name="explore_activators" class="activator" id="muffins" />
                     <div class="explore_container">
-                        <a href="#"><img src="muffins1" alt="muffins" /></a>
-                        <a href="#"><img src="muffins2" alt="muffins" /></a>
-                        <a href="#"><img src="muffins3" alt="muffins" /></a>
-                        <a href="#"><img src="muffins4" alt="muffins" /></a>
-                        <a href="#"><img src="muffins5" alt="muffins" /></a>
-                        <a href="#"><img src="muffins6" alt="muffins" /></a>
+                        <a href="https://www.youtube.com"
+                            ><img
+                                src="https://www.seasonsandsuppers.ca/wp-content/uploads/2023/10/pumpkin-muffins-1200-60-500x500.jpg"
+                                alt="muffins"
+                        /></a>
+                        <a href="https://www.youtube.com"
+                            ><img
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLVK3kJ6-qSJdGMiIZmswj7ifj30OdSvoRyg&s"
+                                alt="muffins"
+                        /></a>
+                        <a href="https://www.youtube.com"
+                            ><img
+                                src="https://confeitando.com.br/wp-content/uploads/2017/03/muffins_cupcakes_diferencas_2.jpg"
+                                alt="muffins"
+                        /></a>
+                        <a href="https://www.youtube.com"
+                            ><img
+                                src="https://www.receitasnestle.com.br/sites/default/files/srh_recipes/160222b0abb61a7e9128bf11be691cc2.jpg"
+                                alt="muffins"
+                        /></a>
+                        <a href="https://www.youtube.com"
+                            ><img
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM_tO1Dzun4Co6OZkmNME8MHrNYFTcRqY_0A&s"
+                                alt="muffins"
+                        /></a>
+                        <a href="https://www.youtube.com"
+                            ><img
+                                src="https://www.rainbownourishments.com/wp-content/uploads/2025/02/vegan-jumbo-blueberry-muffins-2-1.jpg"
+                                alt="muffins"
+                        /></a>
                     </div>
 
-                    <input type="radio" name="explore_activators" class="activator" id="croissant"/>
+                    <input type="radio" name="explore_activators" class="activator" id="croissant" />
                     <div class="explore_container">
-                        <a href="#"><img src="muffins1" alt="croissant" /></a>
-                        <a href="#"><img src="muffins2" alt="croissant" /></a>
-                        <a href="#"><img src="muffins3" alt="croissant" /></a>
-                        <a href="#"><img src="muffins4" alt="croissant" /></a>
-                        <a href="#"><img src="muffins5" alt="croissant" /></a>
-                        <a href="#"><img src="muffins6" alt="croissant" /></a>
+                        <a href="#"
+                            ><img
+                                src="https://blog.swiggy.com/wp-content/uploads/2024/10/Image-1_Pain-Au-Chocolate-1-1024x538.png"
+                                alt="croissant"
+                        /></a>
+                        <a href="#"
+                            ><img
+                                src="https://guiadacozinha.com.br/wp-content/uploads/2012/01/croissant-de-chocolate.jpg"
+                                alt="croissant"
+                        /></a>
+                        <a href="#"
+                            ><img src="https://fitfree.com.br/wp-content/uploads/2023/11/IMG_0033.jpeg" alt="croissant"
+                        /></a>
+                        <a href="#"
+                            ><img
+                                src="https://guiadacozinha.com.br/wp-content/uploads/2012/01/Croissant-tradicional-de-presunto-e-queijo.jpg"
+                                alt="croissant"
+                        /></a>
+                        <a href="#"
+                            ><img
+                                src="https://everydaypie.com/wp-content/uploads/2023/05/Homemade-Croissants-14.jpg"
+                                alt="croissant"
+                        /></a>
+                        <a href="#"
+                            ><img
+                                src="https://encomende.emporiojardimrio.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/c/r/croissant_amendoas.jpg"
+                                alt="croissant"
+                        /></a>
                     </div>
 
-                    <input type="radio" name="explore_activators" class="activator" id="bread"/>
+                    <input type="radio" name="explore_activators" class="activator" id="bread" />
                     <div class="explore_container">
-                        <a href="#"><img src="bread1" alt="bread" /></a>
-                        <a href="#"><img src="bread2" alt="bread" /></a>
-                        <a href="#"><img src="bread3" alt="bread" /></a>
-                        <a href="#"><img src="bread4" alt="bread" /></a>
-                        <a href="#"><img src="bread5" alt="bread" /></a>
-                        <a href="#"><img src="bread6" alt="bread" /></a>
+                        <a href="#"
+                            ><img
+                                src="https://www.marcellinaincucina.com/wp-content/uploads/2017/10/portuguese-sweet-bread-featured.jpg"
+                                alt="bread"
+                        /></a>
+                        <a href="#"
+                            ><img
+                                src="https://ilove2bake.co.za/wp-content/uploads/2019/06/portuguese-bread.jpg"
+                                alt="bread"
+                        /></a>
+                        <a href="#"
+                            ><img
+                                src="https://www.quick-german-recipes.com/images/banner-no-knead-bread-1200x675.webp"
+                                alt="bread"
+                        /></a>
+                        <a href="#"
+                            ><img
+                                src="https://images.squarespace-cdn.com/content/v1/5dd5b5e9f226644911c4d733/1634141725410-0OJXXSFBV41HD0GXH59T/Focaccia-flat-italian-bread.jpg"
+                                alt="bread"
+                        /></a>
+                        <a href="#"
+                            ><img
+                                src="https://www.allrecipes.com/thmb/LkLoOCqLuT-yfCUhZNMhFEcZRnI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/7569341-33fd7d2726024fd3b87ddaa7259bdd86.jpg"
+                                alt="bread"
+                        /></a>
+                        <a href="#"
+                            ><img
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Cheesebread.jpg/1280px-Cheesebread.jpg"
+                                alt="bread"
+                        /></a>
                     </div>
 
-
-                    <input type="radio" name="explore_activators" class="activator" id="tart"/>
+                    <input type="radio" name="explore_activators" class="activator" id="tart" />
                     <div class="explore_container">
-                        <a href="#"><img src="tart1" alt="tart" /></a>
-                        <a href="#"><img src="tart2" alt="tart" /></a>
-                        <a href="#"><img src="tart3" alt="tart" /></a>
-                        <a href="#"><img src="tart4" alt="tart" /></a>
-                        <a href="#"><img src="tart5" alt="tart" /></a>
-                        <a href="#"><img src="tart6" alt="tart" /></a>
+                        <a href="#"
+                            ><img
+                                src="https://www.healthyfood.com/wp-content/uploads/2016/09/Summer-fruit-custard-tart-1-1024x669.jpg"
+                                alt="tart"
+                        /></a>
+                        <a href="#"
+                            ><img
+                                src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/summer-vegetable-pesto-rose-tart-67a071b.jpg?quality=90&resize=440,400"
+                                alt="tart"
+                        /></a>
+                        <a href="#"
+                            ><img
+                                src="https://hips.hearstapps.com/hmg-prod/images/fruit-tart-recipe-3-1650464619.jpg?crop=0.8888888888888888xw:1xh;center,top&resize=1200:*"
+                                alt="tart"
+                        /></a>
+                        <a href="#"
+                            ><img
+                                src="https://assets.epicurious.com/photos/68ebc9aba800b9eac7761936/1:1/w_2560%2Cc_limit/BA-25-04-02-WEB_03_Plum%2520Tart_0019_FINAL.jpg"
+                                alt="tart"
+                        /></a>
+                        <a href="#"
+                            ><img
+                                src="https://www.seriouseats.com/thmb/VMDUI9HEoNPEvOwe_ACF9qpybAo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20250606-SEA-BakewellTart-DebbieWee-HERO-94f4ac31a9b44862a7e168a61962be2c.jpg"
+                                alt="tart"
+                        /></a>
+                        <a href="#"
+                            ><img
+                                src="https://upload.wikimedia.org/wikipedia/commons/7/70/Raspberry_tart.jpg"
+                                alt="tart"
+                        /></a>
                     </div>
 
-                    <input type="radio" name="explore_activators" class="activator" id="favorite"/>
+                    <input type="radio" name="explore_activators" class="activator" id="favorite" />
                     <div class="explore_container">
-                        <a href="#"><img src="favorite1" alt="favorite" /></a>
-                        <a href="#"><img src="favorite2" alt="favorite" /></a>
-                        <a href="#"><img src="favorite3" alt="favorite" /></a>
-                        <a href="#"><img src="favorite4" alt="favorite" /></a>
-                        <a href="#"><img src="favorite5" alt="favorite" /></a>
-                        <a href="#"><img src="favorite6" alt="favorite" /></a>
+                        <a href="#"><img src="images/bread1.png" alt="favorite" /></a>
+
+                        <a href="https://www.google.com"><img src="images/cake2.png" alt="cake" /></a>
+                        <a href="https://www.youtube.com"
+                            ><img
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM_tO1Dzun4Co6OZkmNME8MHrNYFTcRqY_0A&s"
+                                alt="favorite"
+                        /></a>
+                        <a href="#"
+                            ><img src="https://fitfree.com.br/wp-content/uploads/2023/11/IMG_0033.jpeg" alt="favorite"
+                        /></a>
+                        <a href="#"
+                            ><img
+                                src="https://ilove2bake.co.za/wp-content/uploads/2019/06/portuguese-bread.jpg"
+                                alt="favorite"
+                        /></a>
+                        <a href="#"
+                            ><img
+                                src="https://hips.hearstapps.com/hmg-prod/images/fruit-tart-recipe-3-1650464619.jpg?crop=0.8888888888888888xw:1xh;center,top&resize=1200:*"
+                                alt="favorite"
+                        /></a>
                     </div>
-                </nav>
+
+                    <nav>
+                        <ul>
+                            <li><label for="cake">Cake</label></li>
+                            <li><label for="muffins">Muffins</label></li>
+                            <li><label for="croissant">Croissant</label></li>
+                            <li><label for="bread">Bread</label></li>
+                            <li><label for="tart">Tart</label></li>
+                            <li><label for="favorite">Favorite</label></li>
+                        </ul>
+                    </nav>
+                </div>
             </section>
 
             <section class="banner about">
-                <h2>About us</h2>
-                <p>Suspendisse ac rhoncus nisl, eu termpo urna. Curabitur vel bibenjgg.</p>
-                <a href="#" class="btn">Read More</a>
+                <div class="wrapper">
+                    <h2>About us</h2>
+                    <p class="description">Suspendisse ac rhoncus nisl, eu termpo urna. Curabitur vel bibenjgg.</p>
+                    <a href="#" class="btn">Read More</a>
+                </div>
             </section>
 
             <section class="featured">
@@ -176,28 +728,28 @@
                 <div class="featured_container">
                     <article class="featured_card">
                         <a href="#">
-                            <img src="featured1" alt="featured" />
+                            <img src="images/featured1.png" alt="featured" />
                             <div class="featured_details">
                                 <span>Puff Pastry</span>
-                                <span>$8</span>
+                                <span class="price">$8</span>
                             </div>
                         </a>
                     </article>
                     <article class="featured_card">
                         <a href="#">
-                            <img src="featured1" alt="featured" />
+                            <img src="images/featured2.png" alt="featured2" />
                             <div class="featured_details">
                                 <span>Puff Pastry</span>
-                                <span>$8</span>
+                                <span class="price">$8</span>
                             </div>
                         </a>
                     </article>
                     <article class="featured_card">
                         <a href="#">
-                            <img src="featured1" alt="featured" />
+                            <img src="images/featured3.png" alt="featured" />
                             <div class="featured_details">
                                 <span>Puff Pastry</span>
-                                <span>$8</span>
+                                <span class="price">$8</span>
                             </div>
                         </a>
                     </article>
@@ -207,14 +759,22 @@
 
         <footer class="footer">
             <div class="footer_header">
-                <div class="header_logo"><img src="keithson_logo.png" alt="" /></div>
+                <div class="footer_logo"><img src="images/keithston_logo.png" alt="Keithston" /></div>
                 <div class="footer_social">
                     <span>Follow us</span>
                     <ul>
-                        <li>F</li>
-                        <li>P</li>
-                        <li>W</li>
-                        <li>I</li>
+                        <li>
+                            <a href="facebook.com"><i class="fa-brands fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="pinterest.com"><i class="fa-brands fa-pinterest"></i></a>
+                        </li>
+                        <li>
+                            <a href="whatsapp.com"><i class="fa-brands fa-whatsapp"></i></a>
+                        </li>
+                        <li>
+                            <a href="instagram.com"><i class="fa-brands fa-instagram"></i></a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -232,6 +792,7 @@
                 </section>
 
                 <section div="footer_links">
+                    <h1>Explore</h1>
                     <nav>
                         <ul>
                             <li><a href="#">Home</a></li>
@@ -247,14 +808,18 @@
 
                     <div class="news_container">
                         <div class="news_card">
-                            <img src="news1" alt="news" />
-                            <span class="date"></span>
-                            <p>Puff pastry bliss</p>
+                            <img src="images/news1.png" alt="news" />
+                            <div class="news_info">
+                                <span class="date">June 14,2024</span>
+                                <p>Puff pastry bliss</p>
+                            </div>
                         </div>
                         <div class="news_card">
-                            <img src="news2" alt="news" />
-                            <span class="date"></span>
-                            <p>Puff pastry bliss</p>
+                            <img src="images/news2.png" alt="news" />
+                            <div class="news_info">
+                                <span class="date">June 14,2024</span>
+                                <p>Puff pastry bliss</p>
+                            </div>
                         </div>
                     </div>
                 </section>
